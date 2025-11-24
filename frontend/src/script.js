@@ -29,7 +29,8 @@ function loginUser() {
         email_verificacao:verificarEmail.value,
         senha_verificacao:verificarSenha.value
     }).then(function(response) {
-        console.log(response.data.message)
+        console.log(response.data.message);
+        window.location.href = "/src/main.html"
 
     }).catch(function(error){
         console.log('Erro gerado: ', error)
