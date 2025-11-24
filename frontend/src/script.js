@@ -13,10 +13,27 @@ function enviarInfo(){
         senhaUser : senhaUsuario.value,
         emailUser : emailUsuario.value
     }).then(function(response) {
-        console.log('Tudo certo!')
+        console.log(response.data.message)
     }).catch(function(error){
         console.log('Erro gerado: ', error)
     })
 }
 
+
+function loginUser() {
+
+    const verificarEmail = document.getElementById('verify_email')
+    const verificarSenha = document.getElementById('verify_password')
+
+    axios.post('http://localhost:5000/verificarUsuario', {
+        email_verificacao:verificarEmail.value,
+        senha_verificacao:verificarSenha.value
+    }).then(function(response) {
+        console.log(response.data.message)
+
+    }).catch(function(error){
+        console.log('Erro gerado: ', error)
+    })
+
+}
 
