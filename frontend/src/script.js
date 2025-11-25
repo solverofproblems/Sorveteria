@@ -284,7 +284,8 @@ function enviarInfo(){
         setTimeout(() => {
             const redirectLoading = showLoading('Redirecionando...');
             setTimeout(() => {
-                window.location.href = "/src/main.html";
+                // Caminho relativo que funciona tanto em dev quanto em build
+                window.location.href = './src/main.html';
             }, 500);
         }, 2000);
     }).catch(function(error){
@@ -325,7 +326,8 @@ function loginUser() {
         setTimeout(() => {
             const redirectLoading = showLoading('Redirecionando...');
             setTimeout(() => {
-                window.location.href = "/src/main.html";
+                // Caminho relativo que funciona tanto em dev quanto em build
+                window.location.href = './src/main.html';
             }, 500);
         }, 2000);
     }).catch(function(error){
