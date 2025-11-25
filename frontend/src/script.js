@@ -423,3 +423,9 @@ function previsao2026(){
         });
     });
 }
+
+// Expor funções globalmente para funcionar com módulos ES6
+// Isso permite que as funções sejam acessadas via onclick e onsubmit nos HTMLs
+window.enviarInfo = enviarInfo;
+window.loginUser = loginUser;
+window.previsao2026 = previsao2026;
