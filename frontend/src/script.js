@@ -400,7 +400,7 @@ function previsao2026(){
         const previsao = response.data.predict2026;
         // Arredondar para número inteiro (quantidade de sorvetes)
         const quantidadeSorvetes = Math.round(parseFloat(previsao));
-        resultadoElement.textContent = `Previsão 2026: ${quantidadeSorvetes.toLocaleString('pt-BR')} sorvetes`;
+        resultadoElement.textContent = `Previsão 2026: ${quantidadeSorvetes.toLocaleString('pt-BR')}`;
         showNotification('success', 'Cálculo Concluído!', 'Previsão calculada com sucesso!', 3000);
         console.log(response);
     }).catch(function(error){
