@@ -365,7 +365,7 @@ function previsao2026(){
         
         // Verificar se é um número válido e inteiro
         if (isNaN(numero) || numero < 0 || numero !== parseFloat(value)) {
-            showNotification('error', 'Valor Inválido', 'Por favor, insira apenas números inteiros não negativos (ex: 100, 250, 500).', 4000);
+            showNotification('error', 'Valor Inválido', 'Por favor, insira apenas números inteiros não negativos representando a quantidade de sorvetes (ex: 100, 250, 500).', 4000);
             input.focus();
             return;
         }
@@ -398,7 +398,9 @@ function previsao2026(){
         const response = results[0];
         hideLoading();
         const previsao = response.data.predict2026;
-        resultadoElement.textContent = `Previsão 2026: R$ ${parseFloat(previsao).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        // Arredondar para número inteiro (quantidade de sorvetes)
+        const quantidadeSorvetes = Math.round(parseFloat(previsao));
+        resultadoElement.textContent = `Previsão 2026: ${quantidadeSorvetes.toLocaleString('pt-BR')} sorvetes`;
         showNotification('success', 'Cálculo Concluído!', 'Previsão calculada com sucesso!', 3000);
         console.log(response);
     }).catch(function(error){
