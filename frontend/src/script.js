@@ -284,8 +284,9 @@ function enviarInfo(){
         setTimeout(() => {
             const redirectLoading = showLoading('Redirecionando...');
             setTimeout(() => {
-                // Caminho relativo que funciona tanto em dev quanto em build
-                window.location.href = './src/main.html';
+                // Usar caminho absoluto baseado na raiz do site
+                const basePath = window.location.origin;
+                window.location.href = basePath + '/src/main.html';
             }, 500);
         }, 2000);
     }).catch(function(error){
@@ -326,8 +327,9 @@ function loginUser() {
         setTimeout(() => {
             const redirectLoading = showLoading('Redirecionando...');
             setTimeout(() => {
-                // Caminho relativo que funciona tanto em dev quanto em build
-                window.location.href = './src/main.html';
+                // Usar caminho absoluto baseado na raiz do site
+                const basePath = window.location.origin;
+                window.location.href = basePath + '/src/main.html';
             }, 500);
         }, 2000);
     }).catch(function(error){

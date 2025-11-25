@@ -3,6 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   root: '.',
+  base: './', // Usar caminhos relativos para funcionar em qualquer subdiretório
   build: {
     outDir: 'dist',
     rollupOptions: {
