@@ -4,29 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Carlos Eduardo de Lima">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>SorvIA</title>
+    <script>
+        // Garantir que apenas números inteiros não negativos sejam aceitos
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.anosVendidos');
+            inputs.forEach(input => {
+                // Prevenir entrada de caracteres não numéricos
+                input.addEventListener('keypress', function(e) {
+                    // Permitir apenas números (0-9)
+                    if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+                        e.preventDefault();
+                    }
+                });
+                
+                // Garantir que o valor seja sempre um inteiro não negativo
+                input.addEventListener('input', function(e) {
+                    let value = this.value.replace(/[^0-9]/g, '');
+                    if (value === '') {
+                        this.value = '';
+                    } else {
+                        const num = parseInt(value, 10);
+                        if (isNaN(num) || num < 0) {
+                            this.value = '';
+                        } else {
+                            this.value = num;
+                        }
+                    }
+                });
+                
+                // Garantir que ao colar, apenas números sejam aceitos
+                input.addEventListener('paste', function(e) {
+                    e.preventDefault();
+                    const paste = (e.clipboardData || window.clipboardData).getData('text');
+                    const numbers = paste.replace(/[^0-9]/g, '');
+                    if (numbers) {
+                        const num = parseInt(numbers, 10);
+                        if (!isNaN(num) && num >= 0) {
+                            this.value = num;
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-    
-    <h1>Futuro previsor...</h1>
-
-    <div style="display:flex; flex-flow: column wrap; justify-content: center; align-items: center;">
-        <input class='anosVendidos' type="number" placeholder="2020"></input>
-        <input class='anosVendidos' type="number" placeholder="2021"></input>
-        <input class='anosVendidos' type="number" placeholder="2022"></input>
-        <input class='anosVendidos' type="number" placeholder="2023"></input>
-        <input class='anosVendidos' type="number" placeholder="2024"></input>
-        <input class='anosVendidos' type="number" placeholder="2025"></input>
-
-        <button onclick="previsao2026()">Previsão</button>
-
-
-        <input type="number" id="numero_previsto" style="margin-top:50px;"></input>
+    <div class="container">
+        <h1>Previsão de Vendas</h1>
+        
+        <p style="text-align: center; color: var(--marrom); margin-bottom: 30px; position: relative; z-index: 1; font-family: 'Montserrat', sans-serif;">
+            Digite as vendas dos últimos anos para prever 2026!
+        </p>
+        
+        <div class="prediction-container">
+            <div class="inputs-row">
+                <input 
+                    class="anosVendidos ice-cream-input" 
+                    type="number" 
+                    placeholder="2020"
+                    min="0"
+                    step="1"
+                >
+                <input 
+                    class="anosVendidos ice-cream-input" 
+                    type="number" 
+                    placeholder="2021"
+                    min="0"
+                    step="1"
+                >
+                <input 
+                    class="anosVendidos ice-cream-input" 
+                    type="number" 
+                    placeholder="2022"
+                    min="0"
+                    step="1"
+                >
+                <input 
+                    class="anosVendidos ice-cream-input" 
+                    type="number" 
+                    placeholder="2023"
+                    min="0"
+                    step="1"
+                >
+                <input 
+                    class="anosVendidos ice-cream-input" 
+                    type="number" 
+                    placeholder="2024"
+                    min="0"
+                    step="1"
+                >
+                <input 
+                    class="anosVendidos ice-cream-input" 
+                    type="number" 
+                    placeholder="2025"
+                    min="0"
+                    step="1"
+                >
+            </div>
+            
+            <button onclick="previsao2026()" class="btn-primary">Prever 2026</button>
     </div>
 
-
+        <div class="result-box" id="resultado">
+            <span id="numero_previsto">Aguardando cálculo...</span>
+        </div>
+    </div>
 </body>
 </html>

@@ -4,38 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Carlos Eduardo de Lima">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/style.css">
     <title>SorvIA - Cadastro</title>
     <script src="src/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
   </head>
 
-
-
   <body>
-
-
-    <h1>
-      Olá mundo!
-    </h1>
-
-    <input id="name_user" type="text" placeholder="Nome"></input>
-    <input id="email_user" type="text" placeholder="Email"></input>
-    <input id="password_user" type="text" placeholder="Senha"></input>
-
-    <button onclick="enviarInfo()">Enviar</button>
-
-    <a href="src/login.html">Já sou cadastrado</a>
-
-
-
-
-
-
-
+    <div class="container">
+      <h1>Bem-vindo à SorvIA</h1>
+      
+      <form onsubmit="event.preventDefault(); enviarInfo();">
+        <div class="input-group">
+          <input 
+            id="name_user" 
+            type="text" 
+            placeholder="Seu nome completo"
+            required
+          >
+        </div>
+        
+        <div class="input-group">
+          <input 
+            id="email_user" 
+            type="email" 
+            placeholder="Seu melhor e-mail"
+            required
+          >
+        </div>
+        
+        <div class="input-group">
+          <input 
+            id="password_user" 
+            type="password" 
+            placeholder="Crie uma senha segura"
+            required
+          >
+        </div>
+        
+        <button type="submit" class="btn-primary">Cadastrar</button>
+      </form>
+      
+      <a href="src/login.html" class="link">Já sou cadastrado</a>
+    </div>
   </body>
-
-
-
 </html>
