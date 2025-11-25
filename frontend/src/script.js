@@ -269,7 +269,7 @@ function enviarInfo(){
     // Mostrar loading
     const loading = showLoading('Cadastrando usuário...');
 
-    axios.post('http://localhost:5000/cadastroUsuario', {
+    axios.post('https://sorveteria-backend-di63.onrender.com/cadastroUsuario', {
         nomeUser: nomeUsuario.value,
         senhaUser: senhaUsuario.value,
         emailUser: emailUsuario.value
@@ -314,7 +314,7 @@ function loginUser() {
     // Mostrar loading
     const loading = showLoading('Verificando credenciais...');
 
-    axios.post('http://localhost:5000/verificarUsuario', {
+    axios.post('https://sorveteria-backend-di63.onrender.com/verificarUsuario', {
         email_verificacao: verificarEmail.value,
         senha_verificacao: verificarSenha.value
     }).then(function(response) {
@@ -386,7 +386,7 @@ function previsao2026(){
 
     // Fazer a requisição e aguardar o delay mínimo
     Promise.all([
-        axios.post('http://localhost:5000/calculoFuturo', {
+        axios.post('https://sorveteria-backend-di63.onrender.com/calculoFuturo', {
             listaVendas: listaVendas
         }),
         minLoadingTime
