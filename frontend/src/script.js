@@ -38,3 +38,26 @@ function loginUser() {
 
 }
 
+
+
+function previsao2026(){
+
+    const listaVendas = [...document.querySelectorAll('.anosVendidos')].map(input => Number(input.value));
+
+    axios.post('http://localhost:5000/calculoFuturo', {
+
+        listaVendas : listaVendas
+
+
+    }).then(function(response){
+
+        console.log(response);
+
+
+    }).catch(function(error){
+        console.log('Erro gerado: ', error)
+    })
+
+
+}
+

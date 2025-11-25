@@ -1,8 +1,8 @@
-import { createClient } from "@supabase/supabase-js"
+import { createClient } from "@supabase/supabase-js";
 import express from 'express';
-import dotenv from 'dotenv'
-import cors from 'cors'
-
+import dotenv from 'dotenv';
+import cors from 'cors';
+import {PolynomialRegression} from "ml-regression";
 
 const app = express();
 dotenv.config();
@@ -101,8 +101,39 @@ app.post('/verificarUsuario', async (req, res) => {
         })
     }
 
+    
+
+
 
 });
+
+app.post('/calculoFuturo', async(req,res) => {
+
+    const vendas = req.body.listaVendas;
+    let qntdAnos = [];
+
+    for (let x = 1; x <= vendas.length; x ++) {
+        qntdAnos.push(x);
+    }
+
+    const degree = 3;
+
+    const regression = new PolynomialRegression(qntdAnos, vendas, degree);
+
+    const previsaoVendas2026 = regression.predict(7);
+
+    res.json({
+
+        message: "Previsão feita com sucesso!",
+        predict2026 : previsaoVendas2026.toFixed(2),
+        Polinomio : `Previsão feita utilizando uma função polinomial de grau ${degree}`
+        
+    });
+   
+
+
+})
+
 
 
 app.listen(5000);

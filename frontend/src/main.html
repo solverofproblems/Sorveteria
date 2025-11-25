@@ -6,6 +6,7 @@
     <meta name="author" content="Carlos Eduardo de Lima">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>SorvIA</title>
 </head>
 <body>
@@ -13,12 +14,14 @@
     <h1>Futuro previsor...</h1>
 
     <div style="display:flex; flex-flow: column wrap; justify-content: center; align-items: center;">
-        <input type="number" placeholder="2020"></input>
-        <input type="number" placeholder="2021"></input>
-        <input type="number" placeholder="2022"></input>
-        <input type="number" placeholder="2023"></input>
-        <input type="number" placeholder="2024"></input>
-        <input type="number" placeholder="2025"></input>
+        <input class='anosVendidos' type="number" placeholder="2020"></input>
+        <input class='anosVendidos' type="number" placeholder="2021"></input>
+        <input class='anosVendidos' type="number" placeholder="2022"></input>
+        <input class='anosVendidos' type="number" placeholder="2023"></input>
+        <input class='anosVendidos' type="number" placeholder="2024"></input>
+        <input class='anosVendidos' type="number" placeholder="2025"></input>
+
+        <button onclick="previsao2026()">Previsão</button>
 
 
         <input type="number" id="numero_previsto" style="margin-top:50px;"></input>
